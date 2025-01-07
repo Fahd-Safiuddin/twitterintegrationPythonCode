@@ -1,0 +1,30 @@
+import tweepy
+
+# Twitter API credentials: garbled no point reusing - key will either be deleted or inaccurate in the public repo below - its only there for you to recognize it
+API_KEY = "6AWEu4SdxC6UVz12xkgKIbubq"
+API_SECRET = "KeCz0sVn1mG0rIwTeec0lG7SDJ355W71roBgktiJG15pZe4VIi6d"
+ACCESS_TOKEN = "1835158359240314880-TowRWgASDTiEU8WCu1erQqIZg9UmRMNpm"
+ACCESS_TOKEN_SECRET = "VPlSDYV3xbUE9taxGPjCSgDa2JRDDcNs7YmHM2ha36pmihKx"
+
+def post_to_twitter(tweet_content):
+    """Post a tweet using OAuth 1.0a User Context."""
+    try:
+        # Authenticate with Twitter using OAuth 1.0a
+        auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
+        auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+        api = tweepy.API(auth)
+        print("Authentication OK")
+
+        # Post the tweet
+        api.update_status(tweet_content)
+        print("Tweet posted successfully!")
+    except tweepy.TweepyException as e:
+        print(f"Twitter API Error: {e.response}")
+    except Exception as e:
+        print(f"Error: {e}")
+
+# Define the tweet content
+tweet_content = "Testing Twitter API integration with OAuth 1.0a!"
+
+# Call the function
+post_to_twitter(tweet_content)
