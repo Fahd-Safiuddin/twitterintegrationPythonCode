@@ -2,13 +2,13 @@ from mastodon import Mastodon
 
 # Initialize the Mastodon API
 mastodon = Mastodon(
-    access_token="XXXXX",  # Replace with your access token
-    api_base_url="urn:ietf:wg:oauth:2.0:oob"  # Replace with your Mastodon instance URL IT WILL BE something else - no point reusing this. check in your developer potal 
+    access_token="xxx",  # Replace with your access token :) 
+    api_base_url="https://mastodon.social"  # Replaced with your Mastodon instance URL check yours on the address bar
 )
 
 # Post a status
 try:
-    mastodon.status_post("Hello Mastodon! This is a test post from the API.")
+    mastodon.status_post("Hello Mastodon! This is third test post from the API.")
     print("Post successful!")
 except Exception as e:
     print(f"Error posting to Mastodon: {e}")
