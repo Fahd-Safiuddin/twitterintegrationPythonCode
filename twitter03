@@ -1,0 +1,30 @@
+import tweepy
+
+# Twitter API credentials
+API_KEY = "ggg"
+API_SECRET = "gg"
+ACCESS_TOKEN = "gg-gg"
+ACCESS_TOKEN_SECRET = "gg"
+
+def post_to_twitter(tweet_content):
+    #Post a tweet using OAuth 1.0a User Context
+    try:
+        # Authenticate with Twitter using OAuth 1.0a
+        auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
+        auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+        api = tweepy.API(auth)
+        print("Authentication OK")
+
+        # Post the tweet
+        api.update_status(tweet_content)
+        print("Tweet posted successfully!")
+    except tweepy.TweepyException as e:
+        print(f"Twitter API Error: {e.response}")
+    except Exception as e:
+        print(f"Error: {e}")
+
+# Define the tweet content
+tweet_content = "Testing Twitter API integration with OAuth 1.0a!"
+
+# Call the function
+post_to_twitter(tweet_content)
