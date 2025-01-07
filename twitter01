@@ -1,0 +1,31 @@
+pip install tweepy
+import tweepy
+
+def post_to_twitter(tweet_content):
+    # Twitter API credentials
+    API_KEY = "ddd"
+    API_SECRET = "ddd"
+    ACCESS_TOKEN = "sss-sss"
+    ACCESS_TOKEN_SECRET = "ddd"
+
+    # Authenticate with Twitter API
+    try:
+        auth = tweepy.OAuthHandler(API_KEY, API_SECRET)
+        auth.set_access_token(ACCESS_TOKEN, ACCESS_TOKEN_SECRET)
+        api = tweepy.API(auth)
+        print("Authentication OK")
+    except Exception as e:
+        print(f"Error during authentication: {e}")
+        return  # Exit the function if authentication fails
+
+    # Post the tweet
+    try:
+        api.update_status(tweet_content)
+        print("Tweet posted successfully!")
+    except tweepy.TweepyException as e:  # Use Tweepy's updated exception class
+        print(f"Twitter API Error: {e}")
+    except Exception as e:
+        print(f"Error posting to Twitter: {e}")
+
+# Call the function with your tweet content - Not working
+post_to_twitter("Testing Twitter API integration!")
